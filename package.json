@@ -1,0 +1,21 @@
+{
+  "name": "area",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build --parallel",
+    "format": "turbo run format --parallel",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test --parallel",
+    "devfront": "turbo run dev --filter front",
+    "devui": "turbo run dev --filter ui",
+    "devtest": "turbo run test:watch  --parallel"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.13.0"
+  }
+}
