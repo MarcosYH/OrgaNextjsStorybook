@@ -1,0 +1,9 @@
+{
+  "name": "assets",
+  "main": "src",
+  "version": "1.0.0",
+  "scripts": {
+    "format": "prettier --write src"
+  }
+  
+}

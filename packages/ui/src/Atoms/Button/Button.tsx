@@ -1,41 +1,29 @@
-import React from "react";
-import "./button.css";
-
-interface ButtonProps {
-   primary?: boolean;
-   backgroundColor?: string;
-   size?: "small" | "medium" | "large";
-   label: string;
-
-   onClick?: () => void;
+"use client";
+import { ReactNode, forwardRef } from "react";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+   children: string | ReactNode;
+   btnType?: "primary" | "secondary" | string;
+   className?: string;
 }
 
-export const Button = ({
-   primary = false,
-   size = "medium",
-   backgroundColor,
-   label,
-   ...props
-}: ButtonProps) => {
-   const mode = primary
-      ? "storybook-button--primary"
-      : "storybook-button--secondary";
-   return (
-      <button
-         type="button"
-         className={[
-            "storybook-button",
-            `storybook-button--${size}`,
-            mode,
-         ].join(" ")}
-         {...props}
-      >
-         {label}
-         <style jsx>{`
-            button {
-               background-color: ${backgroundColor};
-            }
-         `}</style>
-      </button>
-   );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+   ({ children, btnType, type, className, disabled, ...props }, ref) => {
+      return (
+         <>
+            <button
+               ref={ref}
+               {...props}
+               className={["", className, btnType ? `btn ${btnType}` : ""].join(
+                  " ",
+               )}
+            >
+               {children}
+            </button>
+         </>
+      );
+   },
+);
+
+Button.displayName = "Button";
+
+export { Button };
